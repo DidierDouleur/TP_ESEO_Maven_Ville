@@ -15,11 +15,7 @@ public class App {
 	private static final String NOM = "Nom_commune";
 	
 	public static void main(String[] args) {
-//		System.out.println("Hello World!");
-//		getVille();
-//		printVersion();
-//		System.out.println(getVilleByCodePostal("49460"));
-//		System.out.println(getVilleByCodePostal("14370"));
+
 		if (!args[0].isEmpty() && !args[1].isEmpty()) {
 			double res = getDistanceEntreNom(args[0].toUpperCase(), args[1].toUpperCase());
 			if (res == -1) {
