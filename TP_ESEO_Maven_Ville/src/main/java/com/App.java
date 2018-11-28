@@ -31,7 +31,7 @@ public class App {
 		try {
 			conn = (Connection) DriverManager.getConnection(url, "Bij", "Archos");
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		return conn;
 	}
@@ -50,7 +50,7 @@ public class App {
 
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 
 	}
@@ -67,7 +67,7 @@ public class App {
 				ret = "Longitude=" + rs.getString("Longitude") + " | Latitude=" + rs.getString("Latitude");
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			System.out.println("La ville n'est sans doute pas dans la base de donée");
 		}
 		return ret;
@@ -85,7 +85,7 @@ public class App {
 				ret = "Longitude=" + rs.getString("Longitude") + " | Latitude=" + rs.getString("Latitude");
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			System.out.println("La ville n'est sans doute pas dans la base de donée");
 		}
 		return ret;
