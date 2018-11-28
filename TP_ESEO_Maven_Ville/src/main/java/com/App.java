@@ -8,6 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class App {
+	
+	
+	private static final String userName = "Bij";
+	private static final String password = "Archos";
+	private static final String nom = "Nom_commune";
+	
 	public static void main(String[] args) {
 //		System.out.println("Hello World!");
 //		getVille();
@@ -29,7 +35,7 @@ public class App {
 		String url = "jdbc:mysql://localhost:3306/ville_france";
 		Connection conn = null;
 		try {
-			conn = (Connection) DriverManager.getConnection(url, "Bij", "Archos");
+			conn = (Connection) DriverManager.getConnection(url, userName, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -37,14 +43,13 @@ public class App {
 	}
 
 	public static void getVille() {
-//		String sql = "SELECT * from ville_france where Code_postal=49460";
 		String sql = "SELECT * from ville_france";
 		try (Connection conn = connect(); PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);) {
 
 			ResultSet rs = ps.executeQuery();
 			String nomVille = null;
 			while (rs.next()) {
-				nomVille = rs.getString("Nom_commune");
+				nomVille = rs.getString(nom);
 
 				System.out.println("le nom de la ville est " + nomVille);
 
@@ -63,7 +68,7 @@ public class App {
 			ResultSet rs = ps.executeQuery();
 			String nomVille = null;
 			while (rs.next()) {
-				nomVille = rs.getString("Nom_commune");
+				nomVille = rs.getString(nom);
 				ret = "Longitude=" + rs.getString("Longitude") + " | Latitude=" + rs.getString("Latitude");
 			}
 		} catch (SQLException | ClassNotFoundException e) {
@@ -81,7 +86,7 @@ public class App {
 			ResultSet rs = ps.executeQuery();
 			String nomVille = null;
 			while (rs.next()) {
-				nomVille = rs.getString("Nom_commune");
+				nomVille = rs.getString(nom);
 				ret = "Longitude=" + rs.getString("Longitude") + " | Latitude=" + rs.getString("Latitude");
 			}
 		} catch (SQLException | ClassNotFoundException e) {
@@ -106,11 +111,6 @@ public class App {
 		double latB = Double.parseDouble(ville2.substring(ville2.indexOf("=") + 1, ville2.indexOf("|") - 2));
 		double lngB = Double.parseDouble(ville2.substring(ville2.lastIndexOf("=") + 1, ville2.length()));
 
-//		System.out.println("latA = " + latA);
-//		System.out.println("lngA = " + lngA);
-//		System.out.println("latB = " + latB);
-//		System.out.println("lngB = " + lngB);
-
 		return distance(latA, lngA, latB, lngB);
 	}
 
@@ -128,11 +128,6 @@ public class App {
 		}
 		double latB = Double.parseDouble(ville2.substring(ville2.indexOf("=") + 1, ville2.indexOf("|") - 2));
 		double lngB = Double.parseDouble(ville2.substring(ville2.lastIndexOf("=") + 1, ville2.length()));
-
-//		System.out.println("latA = " + latA);
-//		System.out.println("lngA = " + lngA);
-//		System.out.println("latB = " + latB);
-//		System.out.println("lngB = " + lngB);
 
 		return distance(latA, lngA, latB, lngB);
 	}
