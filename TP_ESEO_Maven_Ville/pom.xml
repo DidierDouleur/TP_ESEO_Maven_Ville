@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>com</groupId>
+	<artifactId>TP_ESEO_Maven</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>TP_ESEO_Maven</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- AJOUT class Main -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<!-- FIN AJOUT class main -->
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.13</version>
+		</dependency>
+	</dependencies>
+
+
+
+	<!-- AJOUT profile -->
+
+	<profiles>
+		<profile>
+			<id>profile</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+
+			</activation>
+
+			<!-- WIP <build>...</build> <modules>...</modules> <repositories>...</repositories> 
+				<pluginRepositories>...</pluginRepositories> <dependencies>...</dependencies> 
+				<reporting>...</reporting> <dependencyManagement>...</dependencyManagement> 
+				<distributionManagement>...</distributionManagement> -->
+
+
+		</profile>
+
+
+		<!-- Profile activé si la propriété systeme environnement vaut "test"  -->
+		<profile>
+			<id>test</id>
+			<activation>
+				<property>
+					<name> environnement </name>
+					<value> test </value>
+				</property>
+
+			</activation>
+
+			<!-- WIP <build>...</build> <modules>...</modules> <repositories>...</repositories> 
+				<pluginRepositories>...</pluginRepositories> <dependencies>...</dependencies> 
+				<reporting>...</reporting> <dependencyManagement>...</dependencyManagement> 
+				<distributionManagement>...</distributionManagement> -->
+
+
+		</profile>
+	</profiles>
+
+
+	<!--FIN AJOUT profile -->
+</project>
+
+
+
