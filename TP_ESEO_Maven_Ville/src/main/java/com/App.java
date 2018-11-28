@@ -10,9 +10,9 @@ import java.sql.ResultSet;
 public class App {
 	
 	
-	private static final String userName = "Bij";
-	private static final String password = "Archos";
-	private static final String nom = "Nom_commune";
+	private static final String USERNAME = "Bij";
+	private static final String PASSWORD = "Archos";
+	private static final String NOM = "Nom_commune";
 	
 	public static void main(String[] args) {
 //		System.out.println("Hello World!");
@@ -35,7 +35,7 @@ public class App {
 		String url = "jdbc:mysql://localhost:3306/ville_france";
 		Connection conn = null;
 		try {
-			conn = (Connection) DriverManager.getConnection(url, userName, password);
+			conn = (Connection) DriverManager.getConnection(url, USERNAME, PASSWORD);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -49,7 +49,7 @@ public class App {
 			ResultSet rs = ps.executeQuery();
 			String nomVille = null;
 			while (rs.next()) {
-				nomVille = rs.getString(nom);
+				nomVille = rs.getString(NOM);
 
 				System.out.println("le nom de la ville est " + nomVille);
 
@@ -68,7 +68,7 @@ public class App {
 			ResultSet rs = ps.executeQuery();
 			String nomVille = null;
 			while (rs.next()) {
-				nomVille = rs.getString(nom);
+				nomVille = rs.getString(NOM);
 				ret = "Longitude=" + rs.getString("Longitude") + " | Latitude=" + rs.getString("Latitude");
 			}
 		} catch (SQLException | ClassNotFoundException e) {
@@ -86,7 +86,7 @@ public class App {
 			ResultSet rs = ps.executeQuery();
 			String nomVille = null;
 			while (rs.next()) {
-				nomVille = rs.getString(nom);
+				nomVille = rs.getString(NOM);
 				ret = "Longitude=" + rs.getString("Longitude") + " | Latitude=" + rs.getString("Latitude");
 			}
 		} catch (SQLException | ClassNotFoundException e) {
